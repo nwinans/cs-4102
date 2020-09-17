@@ -28,16 +28,19 @@ def quadratic_closest(points):
 
 
 def get_runway(ysorted_points, medianx, delta):
-    # A procedure to extract all points in the runway
-    # I found this function to be useful, but you're not required to implement and use it if you don't want to
-    runway = []
-    return runway
-    
+    return [pt for pt in ysorted_points if medianx - delta <= pt[0] <= medianx + delta]
     
 def merge(left, right):
-    # A procedure to merge the points by y value
-    # You'll almost certainly need to use this one, but it's ok if you don't use it.
     merged = []
+    while len(left) != 0 and len(right) != 0:
+        if left[0][1] < right[0][1]:
+            merged.append(left.pop(0))
+        else:
+            merged.append(right.pop(0))
+    if len(left) != 0:
+        merged.extend(left)
+    else:
+        merged.extend(right)
     return merged
 
 
@@ -56,19 +59,36 @@ def dc_closest(xsorted_points):
     #DIVIDE STEP
     # For the divide step, split the list of points into two sub-lists of length n/2
     # Save the median x coordinate, you'll need that later for COMBINE
+    left_list = xsorted_points[:len(xsorted_points)//2]
+    right_list = xsorted_points[len(xsorted_points)//2:]
+    if len(xsorted_points) % 2 == 0:
+        median = (left_list[-1][0] + right_list[0][0]) / 2
+    else:
+        # since we are flooring the middle index, the right list will be longer, so we can grab the first element in the right list and that will be the median. 
+        median = right_list[0][0]
     
     #CONQUER STEP
     # For this step, recursively solve closest pair of points on the two halves
     # You'll need both the distance returned as well as the points sorted by y value
+    delta_left, left_list_solved = dc_closest(left_list)
+    delta_right, right_list_solved = dc_closest(right_list)
     
+    delta = min(delta_left, delta_right)
+
     #COMBINE STEP
     # For this step, you'll need to merge points by y value, identify the points in the "runway", and find the closest pair which crosses the divide
-    
+    merged_lists = merge(left_list_solved, right_list_solved)
+    runway = get_runway(merged_lists, median, delta)
+
+    for i in range(len(runway)):
+        for j in range(i+1, min(len(runway), i+16)): # we want to look at next 15 points, no more, but if we reach the end, we don't want to cause an exception
+            dist = distance(runway[i], runway[j])
+            if delta > dist:
+                delta = dist
+
     #RETURN VALUE
     # The return value will be the distance of the closest pair found and all points sorted by y value
-    delta = 0
-    y_sorted = []
-    return delta, y_sorted
+    return delta, merged_lists
 
     
 def closest_pair(points):
