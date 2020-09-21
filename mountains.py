@@ -1,8 +1,11 @@
+# problem description
+# we are given an array of mountain heights, find ~any~ mountain peak in the range
+
 def peak(heights, start, end):
-    length = end - start
-    if length == 0:
+    length = end - start + 1 # if start and end are equal, the length is 1 so we need to add one the the length
+    if length == 1: # only one height, has to be it
         return heights[start]
-    elif length == 1:
+    elif length == 2: # return the max of two elements
         return max(heights[start], heights[end])
     
     # we have 3 or more elements, perform the mid comparison
@@ -25,7 +28,7 @@ def peak(heights, start, end):
         return peak(heights,mid_index,end)
     # if we have a 3 element list where the mid is not less than the first or last
     # element, then we have a peak in the middle
-    if length == 2:
+    if length == 3:
         return heights[mid_index]
     # arbitrarily pick the right side to continue, there has to be a peak on the
     # right side since we cannot have consecutive values and the mid equals the right
