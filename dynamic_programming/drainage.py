@@ -14,11 +14,6 @@ def backtrack(start_x, start_y):
     contain value "length - 1". The third-from-last location must be
     adjacent to the second-from-last location and contain the value
     "length - 2", etc. 
-    
-    TODO: Implement the function as described above to use drain_map to 
-    reconstruct the longest path ending at (start_x, start_y). The
-    return value of this function should be the list of elevations in
-    order from highest to lowest.
     """
     if drain_map[start_x][start_y] == 1:
         return [elevation_map[start_x][start_y]]
@@ -46,16 +41,11 @@ def find_drain(x, y):
     
     In the opinion of the course staff, this particular function is 
     much easier to implement as "top-down".
-    
-    TODO: Implement, using dynamic programming, this function that
-    will return the length of the longest path through the 
-    elevation map that ends at location (x, y). Use drain_map to
-    keep track of the solutions to your subproblems.
     """
 
     length = len(elevation_map)
 
-    # check if we have solved the current problem already
+    # check if we have solved the current problem already, dynamic programming!
     if drain_map[x][y] != -1:
         return drain_map[x][y]
     
