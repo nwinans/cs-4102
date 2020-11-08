@@ -1,0 +1,30 @@
+12
+14
+start 300
+top1 500
+top2 500
+top3 500
+bottom1 100
+bottom2 100
+bottom3 100
+false1 400
+false2 200
+false3 200
+false4 400
+end 300
+start top1
+top1 top2
+top2 top3
+top3 end
+start bottom1
+bottom1 bottom2
+bottom2 bottom3
+bottom3 end
+start false1
+false1 false2
+false2 end
+start false3
+false3 false4
+false4 end
+start
+end

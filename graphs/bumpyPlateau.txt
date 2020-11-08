@@ -1,0 +1,31 @@
+14
+13
+mountain 400
+start 300
+bump1 300
+dip1 200
+bump2 300
+dip2 200
+bump3 300
+dip3 200
+bump4 300
+dip4 200
+bump5 300
+dip5 200
+end 200
+valley 100
+mountain start
+start bump1
+bump1 dip1
+dip1 bump2
+bump2 dip2
+dip2 bump3
+bump3 dip3
+dip3 bump4
+bump4 dip4
+dip4 bump5
+bump5 dip5
+dip5 end
+end valley
+start
+end
