@@ -1,0 +1,46 @@
+18
+24
+start 700
+aLeft 1200
+aHigh 1300
+aLow 1100
+aRight 1200
+bLeft 900
+bHigh 1000
+bLow 800
+bRight 900
+cLeft 500
+cHigh 600
+cLow 400
+cRight 500
+dLeft 200
+dHigh 300
+dLow 100
+dRight 200
+end 700
+start aLeft
+start bLeft
+start cLeft
+start dLeft
+aLeft aHigh
+aLeft aLow
+bLeft bHigh
+bLeft bLow
+cLeft cHigh
+cLeft cLow
+dLeft dHigh
+dLeft dLow
+aHigh aRight
+aLow aRight
+bHigh bRight
+bLow bRight
+cHigh cRight
+cLow cRight
+dHigh dRight
+dLow dRight
+aRight end
+bRight end
+cRight end
+dRight end
+start
+end

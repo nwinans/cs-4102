@@ -2,7 +2,8 @@ from graph_util import *
 from highroad_lowroad import *
 import os
 
-tests = ['test1.txt', 'test2.txt', 'exponential_length5.txt', 'exponential_length10.txt', 'exponential_length30.txt', 'plateau.txt', 'four_layers10.txt', 'four_layers50.txt']
+tests = ['mountain.txt', 'branches.txt', 'test1.txt', 'test2.txt', 'exponential_length5.txt', 'exponential_length10.txt', 'exponential_length30.txt', 'plateau.txt', 'four_layers10.txt', 'four_layers50.txt']
+#tests = ['test1.txt']
 
 def read_input(filename):
     THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
