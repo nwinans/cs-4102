@@ -48,13 +48,13 @@ def algorithm(roadmap, elevations, start, end):
             if elevations[adj] > elevations[low]:
                 # have we solved this / does it make sense to continue
                 if current_moves + 1 < moves[low+adj]: # we have a new best way to get to a node
-                    moves[low+adj] = current_moves + 1 # reflect the number of moves and ways to reflect
+                    moves[low+adj] = current_moves + 1 # reflect the number of moves and ways to reflect that we have a new, single (so far), best way
                     num_ways[low+adj] = current_num_ways
-                    q.put((low, adj)) # enqueue this pair, we need to solve again
+                    q.put((low, adj)) # enqueue this pair, we need to solve it and any sub problems again
                 elif current_moves + 1 == moves[low+adj]: # we have found more ways to get the same outcome, update numways to reflect
                     num_ways[low+adj] += current_num_ways
             elif adj == low and adj == end: # so we have not found an eligble node, unless the node we are attempting to is the end node, in which case the usual rules of moving do not apply, we can end up at the same node
-                if current_moves + 1 < moves[end+end]: # we have found a new best way to reach the end node, update numways and moves to reflect
+                if current_moves + 1 < moves[end+end]: # we have found a new best way to reach the end node, update numways and moves to reflect a new, single (so far), best way
                     num_ways[end+end] = current_num_ways
                     moves[end+end] = current_moves + 1
                 elif current_moves + 1 == moves[end+end]: # we have found an equally good way to find the end node, update numways to reflect
